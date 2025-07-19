@@ -1,18 +1,35 @@
 import React from 'react';
 import { NavigationContainer } from '@react-navigation/native';
 import { createNativeStackNavigator } from '@react-navigation/native-stack';
-import HomeScreen from './screens/HomeScreen';
-import PlayerScreen from './screens/PlayerScreen';
+import { View, Text, Button, StyleSheet } from 'react-native';
+import IPTVScreen from './screens/IPTVScreen'; // ✅ Import your new screen
 
 const Stack = createNativeStackNavigator();
+
+function HomeScreen({ navigation }) {
+  return (
+    <View style={styles.container}>
+      <Text style={styles.title}>Premium IPTV Player</Text>
+      <Button
+        title="Go to IPTV Setup"
+        onPress={() => navigation.navigate('IPTV')} // ✅ Link to the IPTV screen
+      />
+    </View>
+  );
+}
 
 export default function App() {
   return (
     <NavigationContainer>
       <Stack.Navigator initialRouteName="Home">
         <Stack.Screen name="Home" component={HomeScreen} />
-        <Stack.Screen name="Player" component={PlayerScreen} />
+        <Stack.Screen name="IPTV" component={IPTVScreen} /> {/* ✅ New screen route */}
       </Stack.Navigator>
     </NavigationContainer>
   );
 }
+
+const styles = StyleSheet.create({
+  container: { flex: 1, justifyContent: 'center', alignItems: 'center', padding: 16 },
+  title: { fontSize: 24, fontWeight: 'bold', marginBottom: 20 },
+});
