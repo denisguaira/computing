@@ -1,16 +1,20 @@
-import { View, Text, Pressable } from 'react-native';
-import { Link } from 'expo-router';
+import { View, Text, TextInput, Button } from 'react-native';
 
-export default function Home() {
+export default function IPTVScreen() {
   return (
-    <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
-      <Text>Welcome to Premium IPTV Player!</Text>
+    <View style={{ padding: 20, flex: 1 }}>
+      <Text style={{ fontSize: 24, marginBottom: 20 }}>IPTV Login</Text>
 
-      <Link href="/iptv" asChild>
-        <Pressable style={{ padding: 10, backgroundColor: '#007bff', marginTop: 20 }}>
-          <Text style={{ color: 'white' }}>Go to IPTV Login</Text>
-        </Pressable>
-      </Link>
+      <Text>Server URL</Text>
+      <TextInput style={{ borderWidth: 1, marginBottom: 10 }} />
+
+      <Text>Username</Text>
+      <TextInput style={{ borderWidth: 1, marginBottom: 10 }} />
+
+      <Text>Password</Text>
+      <TextInput style={{ borderWidth: 1, marginBottom: 10, marginBottom: 20 }} secureTextEntry />
+
+      <Button title="Connect" onPress={() => {}} />
     </View>
   );
 }
